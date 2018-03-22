@@ -2,13 +2,15 @@ ifndef CC
 	CC = gcc
 endif
 
-CFLAGS = -Wall -Wextra -O3 -I.. -L..
+CFLAGS = -Wall -Wextra -march=native -O3 -I.
 
 all: ccard
 
-ccard: ccard.c
-	$(CC) $(CFLAGS) -Wc++-compat -o ccard ccard.c
+metrohash.o: metrohash.h metrohash64.c
+	$(CC) $(CFLAGS) -c metrohash64.c -o metrohash.o
 
+ccard: ccard.c metrohash.o
+	$(CC) $(CFLAGS) -Wc++-compat metrohash.o -o ccard ccard.c
 
 clean:
 	rm -rf ccard  *.o *.dSYM *.greg
