@@ -34,10 +34,8 @@ int main(void) {
             fflush(stderr);
         }
         line_num++;
-        // hash = farmhash64_with_seed(str, strlen(str), SEED);
         metrohash64_1((const uint8_t *)str, strlen(str), SEED,
                       (uint8_t *)&hash);
-        // hash = XXH64(str, strlen(str), SEED);
         k = hash >> 50;
         val = (uint8_t)__builtin_clzl((hash << precision) ^ MAX_X) + 1;
         if (registers[k] < val) {
