@@ -4,7 +4,7 @@
 #include <string.h>
 #include "metrohash.h"
 
-#define MAX_LINE_LEN 512
+#define MAX_STRING 100
 #define NUM_REGISTERS 16384
 #define ALPHA (0.7213 / (1 + 1.079 / 16384.0))
 #define MAX_X (UINT64_MAX >> 50)
@@ -21,19 +21,22 @@ float beta(float ez) {
 }
 
 int main(void) {
-    char str[MAX_LINE_LEN];
+    char str[MAX_STRING];
     int i;
     const int precision = 14;
     uint64_t hash = 0;
     uint64_t k;
     uint8_t val;
-    long long line_num = 0;
-    while (fgets(str, MAX_LINE_LEN, stdin) != NULL) {
-        if (line_num % 100000 == 0) {
-            fprintf(stderr, "%6lldK%c", line_num / 1000, 13);
+    long long word_num = 0;
+    char eof = 0;
+    while (!feof(stdin)) {
+        if ((word_num >= 100000) && (word_num % 100000 == 0)) {
+            fprintf(stderr, "Num Words: %9lldK%c", word_num / 1000, 13);
             fflush(stderr);
         }
-        line_num++;
+        scanf("%s", str);
+        if (eof) break;
+        word_num++;
         metrohash64_1((const uint8_t *)str, strlen(str), SEED,
                       (uint8_t *)&hash);
         k = hash >> 50;
