@@ -1,4 +1,4 @@
-# CCard [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+# CCard [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 A single binary written in C to estimate the count of unique strings in a stream of lines on stdin. 
 Use `ccard` where you'd use `zcat some_huge_file.txt.gz | sort -u | wc -l`
