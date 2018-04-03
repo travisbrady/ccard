@@ -55,6 +55,6 @@ int main(void) {
         sum += 1.0 / pow(2.0, (float)registers[i]);
     }
     uint64_t ret = (uint64_t)(ALPHA * m * (m - ez) / (beta(ez) + sum));
-    printf("estimated_cardinality = %10llu\n", ret);
+    printf("%llu\n", ret);
     return 0;
 }

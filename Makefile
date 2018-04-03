@@ -12,6 +12,9 @@ metrohash.o: metrohash.h metrohash64.c
 ccard: ccard.c metrohash.o
 	$(CC) $(CFLAGS) -Wc++-compat metrohash.o -o ccard ccard.c
 
+test: ccard
+	./test.sh
+
 clean:
 	rm -rf ccard  *.o *.dSYM *.greg
 
