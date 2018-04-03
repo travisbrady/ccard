@@ -10,7 +10,7 @@ metrohash.o: metrohash.h metrohash64.c
 	$(CC) $(CFLAGS) -c metrohash64.c -o metrohash.o
 
 ccard: ccard.c metrohash.o
-	$(CC) $(CFLAGS) -lm -Wc++-compat metrohash.o -o ccard ccard.c
+	$(CC) $(CFLAGS) -Wc++-compat metrohash.o -o ccard ccard.c -lm
 
 test: ccard
 	./test.sh
