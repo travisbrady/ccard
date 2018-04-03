@@ -30,19 +30,22 @@ int main(void) {
     long long word_num = 0;
     char eof = 0;
     while (!feof(stdin)) {
+        /*
         if ((word_num >= 100000) && (word_num % 100000 == 0)) {
             fprintf(stderr, "Num Words: %9lldK%c", word_num / 1000, 13);
             fflush(stderr);
         }
-        scanf("%s", str);
-        if (eof) break;
-        word_num++;
-        metrohash64_1((const uint8_t *)str, strlen(str), SEED,
-                      (uint8_t *)&hash);
-        k = hash >> 50;
-        val = (uint8_t)__builtin_clzl((hash << precision) ^ MAX_X) + 1;
-        if (registers[k] < val) {
-            registers[k] = val;
+        */
+        if (scanf("%s", str) == 1) {
+            if (eof) break;
+            word_num++;
+            metrohash64_1((const uint8_t *)str, strlen(str), SEED,
+                          (uint8_t *)&hash);
+            k = hash >> 50;
+            val = (uint8_t)__builtin_clzl((hash << precision) ^ MAX_X) + 1;
+            if (registers[k] < val) {
+                registers[k] = val;
+            }
         }
     }
     float sum = 0.0;
@@ -55,6 +58,6 @@ int main(void) {
         sum += 1.0 / pow(2.0, (float)registers[i]);
     }
     uint64_t ret = (uint64_t)(ALPHA * m * (m - ez) / (beta(ez) + sum));
-    printf("%llu\n", ret);
+    printf("%" PRIu64 "\n", ret);
     return 0;
 }
