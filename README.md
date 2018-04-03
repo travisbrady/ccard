@@ -14,6 +14,44 @@ implementation Go [seiflotfy/loglogbeta](https://github.com/seiflotfy/loglogbeta
 Credit is also due to J. Andrew Rogers for his metrohash-c library [jedisct1/metrohash-c](https://github.com/jedisct1/metrohash-c)
 
 ## Examples
+
+Using the data files from @seiflotfy's [loglogbeta](https://github.com/seiflotfy/loglogbeta) repo.
+The `ratio` field below is computed as `100 - (100 * estimate/exact)`
+
+```
+$ make test
+file: data/words-1
+exact:      150
+estimate: 149
+ratio: 0.667%
+
+file: data/words-2
+exact:     1308
+estimate: 1315
+ratio: -0.535%
+
+file: data/words-3
+exact:    46685
+estimate: 47169
+ratio: -1.036%
+
+file: data/words-4
+exact:   235886
+estimate: 232426
+ratio: 1.467%
+
+file: data/words-5
+exact:   349900
+estimate: 346596
+ratio: 0.945%
+
+file: data/words-6
+exact:   479829
+estimate: 477269
+ratio: 0.534%
+```
+
+### Additional Examples with text8 and others
 ```bash
 # exact
 $ cat /usr/share/dict/words | sort -u | wc -l
