@@ -55,11 +55,12 @@ ratio: 0.534%
 ```bash
 # exact
 $ cat /usr/share/dict/words | sort -u | wc -l
+235886
 # approximate with ccard
 $ cat /usr/share/dict/words | ./ccard
-estimated_cardinality =     236917
+232426
 ```
-So in this case `ccard` error is 0.44%
+So in this case `ccard` error is 1.47%
 
 ```bash
 # on text8 pre-split so as to be one-word-per-line
