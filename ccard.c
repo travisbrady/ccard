@@ -30,12 +30,6 @@ int main(void) {
     long long word_num = 0;
     char eof = 0;
     while (!feof(stdin)) {
-        /*
-        if ((word_num >= 100000) && (word_num % 100000 == 0)) {
-            fprintf(stderr, "Num Words: %9lldK%c", word_num / 1000, 13);
-            fflush(stderr);
-        }
-        */
         if (scanf("%s", str) == 1) {
             if (eof) break;
             word_num++;

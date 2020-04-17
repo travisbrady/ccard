@@ -63,8 +63,7 @@ $ cat /usr/share/dict/words | ./ccard
 So in this case `ccard` error is 1.47%
 
 ```bash
-# on text8 pre-split so as to be one-word-per-line
-# using the trivial python script included herein
+# Compute exact count using trivial Python script contained herein
 $ time pigz -c -d data/text8.lines.gz | python uniq.py
     5.96 real         0.45 user         0.10 sys
 253855
@@ -74,7 +73,7 @@ $ time pigz -c -d data/text8.lines.gz | sort -u | wc -l
 253855
 $ time pigz -c -d data/text8.lines.gz | ./ccard
     1.40 real         0.48 user         0.13 sys
-estimated_cardinality =     253801
+253801
 ```
 Here `ccard` is off by -0.021%
 
